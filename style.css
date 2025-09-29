@@ -1,0 +1,23 @@
+body {
+    background-color: cornflowerblue;
+}
+
+.title {
+    font-family: 'Arial', sans-serif;
+    font-size: large;
+    font-weight: bold;
+    color: black;
+}
+
+.subheading {
+    font-family: 'Arial', sans-serif;
+    font-size: large;
+    color: darkblue;
+}
+
+#embedded.subheading {
+    font-family: 'Arial', sans-serif;
+    font-size: large;
+    color: darkblue;
+    text-decoration: underline;
+}
