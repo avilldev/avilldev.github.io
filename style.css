@@ -2,6 +2,10 @@ body {
   background-color: cornflowerblue;
 }
 
+li {
+  list-style: none;
+}
+
 .title {
   font-family: "Arial", sans-serif;
   font-size: 40px;
@@ -11,7 +15,7 @@ body {
   margin: 1rem;
 }
 
-.subheading {
+.heading-1 {
   font-family: "Arial", sans-serif;
   font-size: 30px;
   color: darkblue;
@@ -19,8 +23,19 @@ body {
   margin: 1rem;
 }
 
+.heading-2 {
+  font-family: "Arial", sans-serif;
+  font-size: 20px;
+
+  background-image: linear-gradient(85deg, white 50%, rgb(114, 114, 246));
+  color: transparent;
+  background-clip: text;
+}
+
 .link-underlined {
   text-decoration: underline;
+  color: whitesmoke;
+  margin: none;
 }
 
 .flex-container-column {
@@ -29,8 +44,10 @@ body {
   align-items: center;
 }
 
-.list-of-buttons {
-  list-style: none;
+.button-list {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
 
 .btn {
@@ -39,11 +56,18 @@ body {
   color: darkblue;
   font-weight: bold;
   text-decoration: none;
+  text-align: center;
+
+  list-style: none;
 
   background-color: white;
-  padding: 15px 100px;
-  display: inline-block;
+  padding: 15px;
+  display: block;
   border-radius: 5px;
 
   margin: 0.8rem;
+}
+
+.unavailable {
+  color: grey;
 }
