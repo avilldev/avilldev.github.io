@@ -6,7 +6,7 @@
     --text-color: #000000;
     --border-light: #ffffff;
     --border-dark: #808080;
-    --font-main: 'MS Sans Serif', Arial, sans-serif;
+    --font-main: 'Courier New', Courier, monospace;
 }
 
 body {
@@ -14,6 +14,7 @@ body {
     margin: 0;
     padding: 20px;
     font-family: var(--font-main);
+    cursor: url('assets/imgs/cursor.png'), auto;
 }
 
 .theme-wrapper {
@@ -53,6 +54,7 @@ body {
     border-right: 1px solid var(--border-dark);
     font-weight: bold;
     padding: 0 4px;
+    cursor: url('assets/imgs/cursor.png'), pointer;
 }
 
 main {
@@ -79,4 +81,9 @@ main p {
 a {
     color: #0000ff;
     text-decoration: underline;
+    cursor: url('assets/imgs/cursor.png'), pointer;
+}
+
+a:visited {
+    color: #800080;
 }
