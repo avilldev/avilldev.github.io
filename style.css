@@ -87,3 +87,26 @@ a {
 a:visited {
     color: #800080;
 }
+
+.card-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+    cursor: url('assets/imgs/cursor.png'), pointer;
+    z-index: 1000;
+}
+
+.card-btn img {
+    width: 55px;
+    image-rendering: pixelated;
+    transition: transform 0.1 ease-out, filter 0.1s ease-out;
+}
+
+.card-btn:hover img {
+    transform: translate(-4px, -4px);
+    filter: drop-shadow(6px 6px 0px rgba(0, 0, 0, 0.5));
+}
