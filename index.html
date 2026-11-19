@@ -7,20 +7,27 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="desktop-icons">
+        <div class="icon" id="icon-vscode">
+            <img src="assets/imgs/vs-code-logo.png" alt="VS Code">
+            <span>VS Code</span>
+        </div>
+        <div class="icon" id="icon-cards">
+            <img src="assets/imgs/card-front.png" alt="VS Code">
+            <span>Cards</span>
+        </div>
+    </div>
+
     <div class="theme-wrapper retro-theme">
         <header class="title-bar">
             <span class="title-text">
-                portfolio.exe
+                main.exe
             </span>
             <div class="title-buttons">
                 <button>?</button>
-                <button>X</button>
+                <button id="close-btn">X</button>
             </div>
         </header>
-
-        <button id="theme-toggle" class="card-btn">
-            <img src="assets/imgs/card-front.png" id="card-img" alt="Switch Theme">
-        </button>
 
         <nav>
             <main>
@@ -34,6 +41,19 @@
             </main>
         </nav>
     </div>
-    
+    <div id="bsod">
+        <p>
+            A fatal exception has occured. The current portfolio will be terminated.
+        </p>
+        <p>
+            Error message: The main program cannot be terminated.
+        </p>
+        <p>* Press any key to return to Windows.</p>
+        <p>* Press CTRL+ALT+DEL again to restart your computer. You will lose any unsaved information in all applications.</p>
+        <p style="text-align: center; margin-top: 40px;">
+            Press any key to continue _
+        </p>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
