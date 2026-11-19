@@ -1,6 +1,8 @@
 :root {
     --bg-color: #008080;
     --window-bg: #c0c0c0;
+    --title-bg: #000080;
+    --title-text: #ffffff;
     --text-color: #000000;
     --border-light: #ffffff;
     --border-dark: #808080;
@@ -24,4 +26,31 @@ body {
     padding: 10px;
     max-width: 800px;
     margin: 0 auto;
+}
+
+.title-bar {
+    background: var(--title-bg);
+    color: var(--title-text);
+    padding: 2px 3px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+
+.title-buttons {
+    display: flex;
+    gap: 4px;
+}
+
+.title-buttons button {
+    border: none;
+    margin: 0;
+    background: var(--window-bg);
+    border-top: 1px solid var(--border-light);
+    border-left: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--border-dark);
+    border-right: 1px solid var(--border-dark);
+    font-weight: bold;
+    padding: 0 4px;
 }
