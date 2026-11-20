@@ -127,3 +127,19 @@ document.addEventListener('click', (e) => {
         startMenu.style.display = 'none';
     }
 });
+
+const menuAbout = document.getElementById('menu-about');
+const aboutWindow = document.getElementById('about-me-window');
+const closeAboutBtn = document.getElementById('close-about-btn');
+
+menuAbout.addEventListener('click', () => {
+    aboutWindow.style.display = 'block';
+    startMenu.style.display = 'none'; // Hides the Start Menu after clicking
+    
+    document.querySelectorAll('.theme-wrapper').forEach(w => w.style.zIndex = 100);
+    aboutWindow.style.zIndex = 2000;
+});
+
+closeAboutBtn.addEventListener('click', () => {
+    aboutWindow.style.display = 'none';
+});

@@ -75,6 +75,8 @@ main {
     border-left: 2px solid var(--border-dark);
     border-bottom: 2px solid var(--border-light);
     border-right: 2px solid var(--border-light);
+    max-height: 200px;
+    overflow-y: auto;
 }
 
 main h1 {
@@ -246,4 +248,15 @@ a:visited {
 .start-item:hover {
     background: var(--title-bg);
     color: white;
+}
+
+#about-me-window {
+    display: none;
+    top: 25%;
+    left: 30%;
+    z-index: 1000;
+}
+
+.sm-p {
+    font-size: 12px;
 }
