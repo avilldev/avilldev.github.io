@@ -1,5 +1,7 @@
 const taskbar = document.querySelector('.taskbar');
 const windows = document.querySelectorAll('.theme-wrapper');
+const startBtn = document.querySelector('.start-btn');
+const startMenu = document.getElementById('start-menu');
 
 let activeWindow = null;
 let isDragging = false;
@@ -18,7 +20,6 @@ windows.forEach(win => {
         startWindowX = win.offsetLeft;
         startWindowY = win.offsetTop;
         
-        // Bring the clicked window to the front
         windows.forEach(w => w.style.zIndex = 100);
         win.style.zIndex = 2000;
     });
@@ -110,4 +111,19 @@ appLinks.forEach(link => {
         newWindow.style.zIndex = 2000;
         document.body.appendChild(newWindow);
     });
+});
+
+startBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (startMenu.style.display === 'flex') {
+        startMenu.style.display = 'none';
+    } else {
+        startMenu.style.display = 'flex';
+    }
+});
+
+document.addEventListener('click', (e) => {
+    if (startMenu.style.display === 'flex' && !startMenu.contains(e.target)) {
+        startMenu.style.display = 'none';
+    }
 });
