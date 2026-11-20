@@ -1,5 +1,6 @@
 const dragWindow = document.querySelector('.theme-wrapper');
 const titleBar = document.querySelector('.title-bar');
+const taskbar = document.querySelector('.taskbar');
 
 let isDragging = false;
 let startMouseX = 0;
@@ -21,7 +22,7 @@ document.addEventListener('mousemove', (e) => {
     let newY = startWindowY + (e.clientY - startMouseY);
 
     let maxX = window.innerWidth - dragWindow.offsetWidth;
-    let maxY = window.innerHeight - dragWindow.offsetHeight;
+    let maxY = window.innerHeight - dragWindow.offsetHeight - taskbar.offsetHeight;
 
     newX = Math.max(0, Math.min(newX, maxX));
     newY = Math.max(0, Math.min(newY, maxY));
@@ -43,4 +44,13 @@ document.addEventListener('keydown', () => {
     if (bsod.style.display === 'block') {
         bsod.style.display = 'none';
     }
-})
+});
+
+function updateTime() {
+    const clock = document.getElementById('clock');
+    const now = new Date();
+    clock.innerText = now.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit'});
+}
+
+updateTime();
+setInterval(updateTime, 1000);
