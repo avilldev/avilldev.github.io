@@ -186,3 +186,19 @@ menuExperience.addEventListener('click', () => {
 closeExperienceBtn.addEventListener('click', () => {
     experienceWindow.style.display = 'none';
 });
+
+const menuProjects = document.getElementById('menu-projects');
+const projectsWindow = document.getElementById('projects-window');
+const closeProjectsBtn = document.getElementById('close-projects-btn');
+
+menuProjects.addEventListener('click', () => {
+    projectsWindow.style.display = 'block';
+    startMenu.style.display = 'none';
+    
+    document.querySelectorAll('.theme-wrapper').forEach(w => w.style.zIndex = 100);
+    menuProjects.style.zIndex = 2000;
+});
+
+closeProjectsBtn.addEventListener('click', () => {
+    projectsWindow.style.display = 'none';
+});

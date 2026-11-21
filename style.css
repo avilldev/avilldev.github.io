@@ -277,11 +277,22 @@ a:visited {
     z-index: 1000;
 }
 
+#projects-window {
+    display: none;
+    top: 30%;
+    left: 35%;
+    z-index: 1000;
+}
+
 #about-me-window main {
     max-height: 500px;
 }
 
 #experience-window main {
+    max-height: 400px;
+}
+
+#projects-window main {
     max-height: 400px;
 }
 
