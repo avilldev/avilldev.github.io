@@ -9,6 +9,7 @@
     --highlight-color: #5c6fe9;
     --font-main: 'Courier New', Courier, monospace;
     --taskbar-height: 45px;
+    --dafault-p-size: 20px;
 }
 
 body {
@@ -93,6 +94,7 @@ main h1 {
 main p {
     line-height: 1.5;
     margin-bottom: 15px;
+    font-size: var(--dafault-p-size);
 }
 
 a {
@@ -198,7 +200,7 @@ a:visited {
     border-right: 2px solid var(--border-light);
 }
 
-#coming-soon-popup {
+.app-popup {
     display: none;
     z-index: 2000;
     left: 35%;
@@ -265,7 +267,7 @@ a:visited {
 }
 
 .sm-p {
-    font-size: 16px;
+    font-size: calc(var(--dafault-p-size) - 2px);
 }
 
 #experience-window {
@@ -275,8 +277,20 @@ a:visited {
     z-index: 1000;
 }
 
+#about-me-window main {
+    max-height: 500px;
+}
+
+#experience-window main {
+    max-height: 400px;
+}
+
+.app-popup main {
+    max-height: 150px;
+}
+
 @media (max-width: 768px) {
-    .theme-wrapper, #coming-soon-popup, #about-me-window, #experience-window {
+    .theme-wrapper, .app-popup, #about-me-window, #experience-window {
         left: 5%;
         top: 10%;
         max-height: 80vh;
