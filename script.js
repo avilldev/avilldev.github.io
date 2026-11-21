@@ -177,7 +177,7 @@ menuExperience.addEventListener('click', () => {
     startMenu.style.display = 'none';
     
     document.querySelectorAll('.theme-wrapper').forEach(w => w.style.zIndex = 100);
-    aboutWindow.style.zIndex = 2000;
+    menuExperience.style.zIndex = 2000;
 });
 
 closeExperienceBtn.addEventListener('click', () => {
