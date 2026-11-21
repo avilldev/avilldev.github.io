@@ -12,7 +12,7 @@ let startWindowY = 0;
 
 windows.forEach(win => {
     const titleBar = win.querySelector('.title-bar');
-    titleBar.addEventListener('mousedown', (e) => {
+    const startDrag = (e) => {
         isDragging = true;
         activeWindow = win;
         startMouseX = e.clientX;
@@ -20,13 +20,16 @@ windows.forEach(win => {
         startWindowX = win.offsetLeft;
         startWindowY = win.offsetTop;
         
-        windows.forEach(w => w.style.zIndex = 100);
+        document.querySelectorAll('.theme-wrapper').forEach(w => w.style.zIndex = 100);
         win.style.zIndex = 2000;
-    });
+    };
+
+    titleBar.addEventListener('pointerdown', startDrag);
 });
 
-document.addEventListener('mousemove', (e) => {
+const dragMove = (e) => {
     if (!isDragging || !activeWindow) return;
+
     let newX = startWindowX + (e.clientX - startMouseX);
     let newY = startWindowY + (e.clientY - startMouseY);
 
@@ -37,16 +40,21 @@ document.addEventListener('mousemove', (e) => {
     newY = Math.max(0, Math.min(newY, maxY));
     activeWindow.style.left = newX + 'px';
     activeWindow.style.top = newY + 'px';
-});
+};
 
-document.addEventListener('mouseup', () => {
+document.addEventListener('pointermove', dragMove);
+
+const dragEnd = () => {
     isDragging = false;
     activeWindow = null;
-});
+};
+
+document.addEventListener('pointerup', dragEnd);
 
 const closeBtn = document.getElementById('close-btn');
 const bsod = document.getElementById('bsod');
-closeBtn.addEventListener('click', () => {
+closeBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
     bsod.style.display = 'block';
 });
 
@@ -55,6 +63,13 @@ document.addEventListener('keydown', () => {
         bsod.style.display = 'none';
     }
 });
+
+bsod.addEventListener('click', () => {
+    if (bsod.style.display === 'block') {
+        bsod.style.display = 'none';
+    }
+});
+
 
 function updateTime() {
     const clock = document.getElementById('clock');
@@ -86,16 +101,24 @@ appLinks.forEach(link => {
         newWindow.querySelector('.title-text').innerText = appName + '.exe';
         newWindow.querySelector('main p').innerHTML = `<b>${appName}</b> is not available right now.<br><br>Coming soon!`;
 
+        document.body.appendChild(newWindow);
+
         const openWindows = document.querySelectorAll('.theme-wrapper').length;
-        newWindow.style.left = (35 + (openWindows * 2)) + '%';
-        newWindow.style.top = (30 + (openWindows * 2)) + '%';
+        let idealX = (window.innerWidth > 768 ? window.innerWidth * 0.35 : window.innerWidth * 0.05) + (openWindows * 20);
+        let idealY = (window.innerWidth > 768 ? window.innerHeight * 0.30 : window.innerHeight * 0.1) + (openWindows * 20);
+        
+        let maxX = window.innerWidth - newWindow.offsetWidth;
+        let maxY = window.innerHeight - newWindow.offsetHeight - taskbar.offsetHeight;
+        
+        newWindow.style.left = Math.max(0, Math.min(idealX, maxX)) + 'px';
+        newWindow.style.top = Math.max(0, Math.min(idealY, maxY)) + 'px';
 
         newWindow.querySelector('.title-buttons button').addEventListener('click', () => {
             newWindow.remove();
         });
 
         const titleBar = newWindow.querySelector('.title-bar');
-        titleBar.addEventListener('mousedown', (e) => {
+        const startDragPopup = (e) => {
             isDragging = true;
             activeWindow = newWindow;
             startMouseX = e.clientX;
@@ -105,11 +128,12 @@ appLinks.forEach(link => {
             
             document.querySelectorAll('.theme-wrapper').forEach(w => w.style.zIndex = 100);
             newWindow.style.zIndex = 2000;
-        });
+        };
+
+        titleBar.addEventListener('pointerdown', startDragPopup);
 
         document.querySelectorAll('.theme-wrapper').forEach(w => w.style.zIndex = 100);
         newWindow.style.zIndex = 2000;
-        document.body.appendChild(newWindow);
     });
 });
 
@@ -134,7 +158,7 @@ const closeAboutBtn = document.getElementById('close-about-btn');
 
 menuAbout.addEventListener('click', () => {
     aboutWindow.style.display = 'block';
-    startMenu.style.display = 'none'; // Hides the Start Menu after clicking
+    startMenu.style.display = 'none';
     
     document.querySelectorAll('.theme-wrapper').forEach(w => w.style.zIndex = 100);
     aboutWindow.style.zIndex = 2000;
