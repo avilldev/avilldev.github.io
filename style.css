@@ -264,8 +264,15 @@ a:visited {
     font-size: 12px;
 }
 
+#experience-window {
+    display: none;
+    top: 30%;
+    left: 35%;
+    z-index: 1000;
+}
+
 @media (max-width: 768px) {
-    .theme-wrapper, #coming-soon-popup, #about-me-window {
+    .theme-wrapper, #coming-soon-popup, #about-me-window, #experience-window {
         left: 5%;
         top: 10%;
         max-height: 80vh;

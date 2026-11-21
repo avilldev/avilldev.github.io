@@ -167,3 +167,19 @@ menuAbout.addEventListener('click', () => {
 closeAboutBtn.addEventListener('click', () => {
     aboutWindow.style.display = 'none';
 });
+
+const menuExperience = document.getElementById('menu-experience');
+const experienceWindow = document.getElementById('experience-window');
+const closeExperienceBtn = document.getElementById('close-experience-btn');
+
+menuExperience.addEventListener('click', () => {
+    experienceWindow.style.display = 'block';
+    startMenu.style.display = 'none';
+    
+    document.querySelectorAll('.theme-wrapper').forEach(w => w.style.zIndex = 100);
+    aboutWindow.style.zIndex = 2000;
+});
+
+closeExperienceBtn.addEventListener('click', () => {
+    experienceWindow.style.display = 'none';
+});
