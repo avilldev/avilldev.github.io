@@ -83,6 +83,8 @@ setInterval(updateTime, 1000);
 const appLinks = document.querySelectorAll('.app-link');
 const popupTemplate = document.getElementById('coming-soon-popup');
 
+let popupSpawnCount = 0;
+
 appLinks.forEach(link => {
     link.addEventListener('click', () => {
         const appName = link.querySelector('span').innerText;
@@ -103,9 +105,10 @@ appLinks.forEach(link => {
 
         document.body.appendChild(newWindow);
 
-        const openWindows = document.querySelectorAll('.theme-wrapper').length;
-        let idealX = (window.innerWidth > 768 ? window.innerWidth * 0.35 : window.innerWidth * 0.05) + (openWindows * 20);
-        let idealY = (window.innerWidth > 768 ? window.innerHeight * 0.30 : window.innerHeight * 0.1) + (openWindows * 20);
+        popupSpawnCount++;
+        let cascadeOffset = (popupSpawnCount % 10) * 20;
+        let idealX = (window.innerWidth > 768 ? window.innerWidth * 0.35 : window.innerWidth * 0.05) + cascadeOffset;
+        let idealY = (window.innerWidth > 768 ? window.innerHeight * 0.30 : window.innerHeight * 0.1) + cascadeOffset;
         
         let maxX = window.innerWidth - newWindow.offsetWidth;
         let maxY = window.innerHeight - newWindow.offsetHeight - taskbar.offsetHeight;
